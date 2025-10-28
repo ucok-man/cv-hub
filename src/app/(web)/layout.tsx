@@ -9,9 +9,9 @@ import { fonts } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "CVHub — AI-Powered CV & Resume Analyzer",
+  title: "CV-HUB — AI-Powered CV & Resume Analyzer",
   description:
-    "Optimize your CV and resume with CVHub, an AI-powered analyzer that helps you enhance content, structure, and keywords to stand out in job applications.",
+    "Optimize your CV and resume with CV-HUB, an AI-powered analyzer that helps you enhance content, structure, and keywords to stand out in job applications.",
   keywords: [
     "CV analyzer",
     "resume analyzer",
