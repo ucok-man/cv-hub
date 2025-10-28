@@ -3,6 +3,7 @@ import { IBM_Plex_Serif, JetBrains_Mono, Mona_Sans } from "next/font/google";
 const monasans = Mona_Sans({
   variable: "--font-mona-sans",
   subsets: ["latin"],
+  // weight: ["500"],
 });
 
 const ibmserif = IBM_Plex_Serif({

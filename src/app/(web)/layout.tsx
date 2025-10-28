@@ -1,3 +1,5 @@
+import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
 import { Providers } from "@/components/providers";
 import "@/orpc/orpc.server";
 import type { Metadata } from "next";
@@ -28,9 +30,13 @@ type Props = {
 export default function RootLayout({ children }: Props) {
   return (
     <html className="dark" lang="en">
-      <body className={`${fonts} antialiased`}>
+      <body className={`${fonts} antialiased bg-background`}>
         <Providers>
-          {children}
+          <main>
+            <Navbar />
+            <div className="pt-24 min-h-screen">{children}</div>
+            <Footer />
+          </main>
           <Toaster />
         </Providers>
       </body>

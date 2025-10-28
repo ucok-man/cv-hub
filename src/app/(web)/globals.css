@@ -41,6 +41,11 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* Fonts */
+  --font-sans: var(--font-mona-sans);
+  --font-serif: var(--font-ibm-serif);
+  --font-mono: var(--font-jb-mono);
 }
 
 :root {
@@ -113,10 +118,10 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+  button {
+    @apply cursor-pointer;
   }
 }
