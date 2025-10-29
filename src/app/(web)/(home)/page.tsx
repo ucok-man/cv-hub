@@ -1,5 +1,5 @@
 import MaxWidthWrapper from "@/components/max-width-wrapper";
-import FormSubmission from "./form-submission";
+import Submission from "./submission";
 
 export default function HomePage() {
   return (
@@ -15,7 +15,7 @@ export default function HomePage() {
       </MaxWidthWrapper>
 
       <MaxWidthWrapper className="flex items-center justify-center max-w-xl">
-        <FormSubmission />
+        <Submission />
       </MaxWidthWrapper>
     </section>
   );

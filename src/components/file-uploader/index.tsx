@@ -12,7 +12,7 @@ type FileUploaderProps = {
   defaultValue: File | null;
 };
 
-const MAX_FILE_SIZE = 16 * 1024 * 1024; // 16MB in bytes
+const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB in bytes
 
 export default function FileUploader({
   onFileSelect,

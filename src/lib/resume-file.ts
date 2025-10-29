@@ -2,8 +2,8 @@ import { PDFParse } from "pdf-parse";
 import { getPath } from "pdf-parse/worker";
 import { fromBuffer } from "pdf2pic";
 import { Options } from "pdf2pic/dist/types/options";
-import z from "zod";
 import { openai } from "./openai";
+import { Feedback, FeedbackSchema } from "./types";
 PDFParse.setWorker(getPath());
 
 const instruction = (jobTitle: string, jobDescription: string) => `
@@ -87,73 +87,7 @@ The JSON must strictly follow this schema:
 If the provided text or image content is unclear, make reasonable assumptions and proceed with best-effort analysis.
 `;
 
-const tipBaseSchema = z.object({
-  type: z.enum(["good", "improve"]),
-  tip: z.string().min(1, "Tip cannot be empty"),
-});
-
-const tipWithExplanationSchema = tipBaseSchema.extend({
-  explanation: z.string().min(1, "Explanation cannot be empty"),
-});
-
-export const feedbackSchema = z.object({
-  overallScore: z
-    .number()
-    .min(0, "Overall score must be at least 0")
-    .max(100, "Overall score must be at most 100"),
-
-  ATS: z.object({
-    score: z
-      .number()
-      .min(0, "ATS score must be at least 0")
-      .max(100, "ATS score must be at most 100"),
-    tips: z.array(tipBaseSchema).min(1, "Must include at least one tip"),
-  }),
-
-  toneAndStyle: z.object({
-    score: z
-      .number()
-      .min(0, "Tone and style score must be at least 0")
-      .max(100, "Tone and style score must be at most 100"),
-    tips: z
-      .array(tipWithExplanationSchema)
-      .min(1, "Must include at least one tip"),
-  }),
-
-  content: z.object({
-    score: z
-      .number()
-      .min(0, "Content score must be at least 0")
-      .max(100, "Content score must be at most 100"),
-    tips: z
-      .array(tipWithExplanationSchema)
-      .min(1, "Must include at least one tip"),
-  }),
-
-  structure: z.object({
-    score: z
-      .number()
-      .min(0, "Structure score must be at least 0")
-      .max(100, "Structure score must be at most 100"),
-    tips: z
-      .array(tipWithExplanationSchema)
-      .min(1, "Must include at least one tip"),
-  }),
-
-  skills: z.object({
-    score: z
-      .number()
-      .min(0, "Skills score must be at least 0")
-      .max(100, "Skills score must be at most 100"),
-    tips: z
-      .array(tipWithExplanationSchema)
-      .min(1, "Must include at least one tip"),
-  }),
-});
-
-type Feedback = z.infer<typeof feedbackSchema>;
-
-export class Resume {
+export class ResumeFile {
   constructor(private file: File) {}
 
   async screenshots() {
@@ -237,7 +171,7 @@ export class Resume {
 
         const text = response.output_text?.trim() ?? "";
         const json = JSON.parse(text);
-        const { success, data } = feedbackSchema.safeParse(json);
+        const { success, data } = FeedbackSchema.safeParse(json);
         if (!success) continue;
 
         feedback = data;

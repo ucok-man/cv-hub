@@ -21,3 +21,19 @@ export function formatSize(bytes: number): string {
 export function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+export function parseSlug(slug: string) {
+  const arr = slug.split("-");
+  const id = arr.pop() ?? "";
+  const jobtitle = arr.join(" ");
+
+  return { id, jobtitle };
+}
+
+export function titlecase(name: string) {
+  const arr = name.split(" ");
+  const clean = arr
+    .map((text) => text[0].toUpperCase() + text.substring(1))
+    .join(" ");
+  return clean;
+}
