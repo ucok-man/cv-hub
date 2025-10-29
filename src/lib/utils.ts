@@ -37,3 +37,31 @@ export function titlecase(name: string) {
     .join(" ");
   return clean;
 }
+
+export function scoreStyle(score: number) {
+  if (score >= 85) {
+    return {
+      bg: "bg-emerald-950/30",
+      text: "text-emerald-400",
+      label: "Excellent",
+    };
+  } else if (score >= 70) {
+    return {
+      bg: "bg-lime-950/30",
+      text: "text-lime-400",
+      label: "Strong",
+    };
+  } else if (score >= 50) {
+    return {
+      bg: "bg-amber-950/30",
+      text: "text-amber-400",
+      label: "Good Start",
+    };
+  } else {
+    return {
+      bg: "bg-rose-950/30",
+      text: "text-rose-400",
+      label: "Needs Work",
+    };
+  }
+}
