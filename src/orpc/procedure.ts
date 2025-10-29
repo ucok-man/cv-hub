@@ -11,7 +11,7 @@ const withTimer = base.middleware(async ({ next, path }) => {
   const result = await next();
 
   const end = Date.now();
-  console.log(`[ORPC] ${path} took ${end - start}ms to execute`);
+  console.log(`[ORPC] ${path.join(".")} took ${end - start}ms to execute`);
 
   return result;
 });

@@ -1,5 +1,5 @@
-import { greeRouter } from "./greet";
+import { resumeRouter } from "./resume";
 
 export const router = {
-  greet: greeRouter,
+  resume: resumeRouter,
 };
