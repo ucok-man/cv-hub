@@ -21,6 +21,9 @@ export const metadata: Metadata = {
     "resume improvement",
     "career tools",
   ],
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 type Props = {
