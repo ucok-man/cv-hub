@@ -35,8 +35,8 @@ export default function SubmitPending({ status }: Props) {
         />
       </div>
 
-      <div className="flex items-center justify-center gap-2">
-        <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-2">
+        <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse relative -bottom-px" />
         <p className="text-xl text-muted-foreground">{infotext(status)}</p>
       </div>
     </div>
