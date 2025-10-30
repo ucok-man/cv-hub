@@ -1,10 +1,10 @@
-import MaxWidthWrapper from "@/components/max-width-wrapper";
 import { parseSlug } from "@/lib/utils";
 import { api } from "@/orpc";
 import { notFound } from "next/navigation";
 import FeedbackATS from "./_components/feedback-ats";
 import FeedbackDetails from "./_components/feedback-details";
 import FeedbackSummary from "./_components/feedback-summary";
+import PDFViewer from "./_components/pdf-viewer";
 
 export default async function Feedback(
   props: PageProps<"/feedback/[...slug]">
@@ -18,11 +18,17 @@ export default async function Feedback(
 
   return (
     <section>
-      <MaxWidthWrapper className="py-8 space-y-8">
-        <FeedbackSummary feedback={resume.feedback} />
-        <FeedbackATS ats={resume.feedback.ATS} />
-        <FeedbackDetails feedback={resume.feedback} />
-      </MaxWidthWrapper>
+      <div className="flex flex-row items-start relative p-8 pt-0 gap-8">
+        {/* <div className="top-24 sticky"> */}
+        <PDFViewer imageurls={resume.images} />
+        {/* </div> */}
+
+        <div className="w-full space-y-8">
+          <FeedbackSummary feedback={resume.feedback} />
+          <FeedbackATS ats={resume.feedback.ATS} />
+          <FeedbackDetails feedback={resume.feedback} />
+        </div>
+      </div>
     </section>
   );
 }

@@ -34,7 +34,7 @@ export default function RootLayout({ children }: Props) {
         <Providers>
           <main>
             <Navbar />
-            <div className="pt-24 min-h-screen">{children}</div>
+            <div className="pt-24 min-h-screen relative">{children}</div>
             <Footer />
           </main>
           <Toaster />
