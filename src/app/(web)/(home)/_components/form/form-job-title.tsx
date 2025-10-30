@@ -78,7 +78,12 @@ export default function FormJobTitle(props: Props) {
       </FieldGroup>
 
       <FieldGroup className="w-full flex flex-row justify-end">
-        <Button type="submit">Next</Button>
+        <Button
+          type="submit"
+          className="bg-rose-500 hover:bg-rose-500/90 text-foreground"
+        >
+          Next
+        </Button>
       </FieldGroup>
     </form>
   );

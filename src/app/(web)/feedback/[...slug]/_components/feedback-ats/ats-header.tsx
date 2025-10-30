@@ -15,19 +15,24 @@ export default function ATSHeader({ score }: Props) {
           <Icon className={`w-8 h-8 ${styles.iconColor}`} />
         </div>
         <div className="flex-1 min-w-0">
-          <div className="flex items-baseline gap-2 mb-1">
-            <h2 className="text-2xl font-bold text-foreground">
-              {score}
-              <span className="text-lg font-normal text-muted-foreground">
-                /100
+          <div className="flex flex-col sm:flex-row items-baseline sm:gap-2 gap-1 mb-1">
+            <div className="flex items-baseline gap-1 shrink-0">
+              <span
+                className={`text-xl sm:text-2xl font-semibold ${
+                  scoreStyle(score).labelColor
+                }`}
+              >
+                {score}
               </span>
-            </h2>
+              <span className="text-sm text-muted-foreground">/100</span>
+            </div>
             <span
               className={`text-sm font-semibold ${styles.labelColor} font-mono`}
             >
               {styles.label}
             </span>
           </div>
+
           <p className="text-sm text-muted-foreground">
             ATS Compatibility Score
           </p>

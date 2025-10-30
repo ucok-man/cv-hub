@@ -7,7 +7,7 @@ type Props = {
 
 export default function SummaryStats({ totalStrength, totleImprove }: Props) {
   return (
-    <div className="flex items-center gap-6 text-sm">
+    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 text-sm">
       <div className="flex items-center gap-2">
         <CheckCircle2 className="w-4 h-4 text-emerald-400" />
         <span className="text-muted-foreground">

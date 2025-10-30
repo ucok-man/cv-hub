@@ -55,6 +55,7 @@ export default function FormFileUpload(props: Props) {
         </Button>
 
         <Button
+          className="bg-rose-500 hover:bg-rose-500/90 text-foreground"
           type="button"
           onClick={() => {
             if (!file) {

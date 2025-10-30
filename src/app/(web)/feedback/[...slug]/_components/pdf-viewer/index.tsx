@@ -1,5 +1,7 @@
 "use client";
 
+import { useIsMobile } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
 import {
   ChevronLeft,
   ChevronRight,
@@ -17,6 +19,7 @@ export default function PDFViewer({ imageurls }: Props) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [zoom, setZoom] = useState(80);
+  const isMobile = useIsMobile();
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % imageurls.length);
@@ -31,7 +34,7 @@ export default function PDFViewer({ imageurls }: Props) {
   const toggleFullscreen = () => {
     setIsFullscreen(!isFullscreen);
     if (!isFullscreen) {
-      setZoom(50); // Reset zoom when entering fullscreen
+      setZoom(isMobile ? 100 : 50); // Reset zoom when entering fullscreen
     }
   };
 
@@ -48,7 +51,12 @@ export default function PDFViewer({ imageurls }: Props) {
   };
 
   return (
-    <div className="w-full max-w-2xl sticky top-8 z-50">
+    <div
+      className={cn(
+        "w-full max-w-2xl max-lg:mx-auto lg:sticky lg:top-8",
+        isFullscreen ? "z-50" : "z-20"
+      )}
+    >
       <div
         className={`transition-all duration-300 ${
           isFullscreen ? "fixed inset-0 bg-background p-4" : "relative"
@@ -60,24 +68,28 @@ export default function PDFViewer({ imageurls }: Props) {
           }`}
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-border bg-card/50 backdrop-blur-sm">
-            <div className="flex items-center gap-2">
+          <div className="flex items-center justify-between px-3 sm:px-6 py-3 sm:py-4 border-b border-border bg-card/50 backdrop-blur-sm overflow-auto">
+            <div className="flex items-center gap-1 sm:gap-2">
               <button
                 onClick={prevSlide}
                 disabled={currentIndex === 0}
-                className="p-2 rounded-lg hover:bg-accent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="p-1.5 sm:p-2 rounded-lg hover:bg-accent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 aria-label="Previous page"
               >
-                <ChevronLeft className="w-5 h-5 text-foreground" />
+                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-foreground" />
               </button>
 
-              <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-muted/50">
-                <span className="text-sm text-muted-foreground">Page</span>
-                <span className="text-sm font-semibold text-foreground tabular-nums">
+              <div className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 rounded-lg bg-muted/50">
+                <span className="hidden sm:inline text-sm text-muted-foreground">
+                  Page
+                </span>
+                <span className="text-xs sm:text-sm font-semibold text-foreground tabular-nums">
                   {currentIndex + 1}
                 </span>
-                <span className="text-sm text-muted-foreground">of</span>
-                <span className="text-sm font-semibold text-foreground tabular-nums">
+                <span className="text-xs sm:text-sm text-muted-foreground">
+                  /
+                </span>
+                <span className="text-xs sm:text-sm font-semibold text-foreground tabular-nums">
                   {imageurls.length}
                 </span>
               </div>
@@ -85,52 +97,52 @@ export default function PDFViewer({ imageurls }: Props) {
               <button
                 onClick={nextSlide}
                 disabled={currentIndex === imageurls.length - 1}
-                className="p-2 rounded-lg hover:bg-accent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="p-1.5 sm:p-2 rounded-lg hover:bg-accent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 aria-label="Next page"
               >
-                <ChevronRight className="w-5 h-5 text-foreground" />
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-foreground" />
               </button>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-0.5 sm:gap-0">
               {/* Zoom Controls */}
               <button
                 onClick={zoomOut}
                 disabled={zoom <= 50}
-                className="p-2 rounded-lg hover:bg-accent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="p-1.5 sm:p-2 rounded-lg hover:bg-accent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 aria-label="Zoom out"
               >
-                <ZoomOut className="w-4 h-4 text-muted-foreground" />
+                <ZoomOut className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground" />
               </button>
               <button
                 onClick={resetZoom}
-                className="px-3 py-1 rounded-lg hover:bg-accent transition-colors text-xs font-medium text-muted-foreground min-w-[60px]"
+                className="px-2 sm:px-3 py-1 rounded-lg hover:bg-accent transition-colors text-xs font-medium text-muted-foreground min-w-[50px] sm:min-w-[60px]"
               >
                 {zoom}%
               </button>
               <button
                 onClick={zoomIn}
                 disabled={zoom >= 150}
-                className="p-2 rounded-lg hover:bg-accent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                className="p-1.5 sm:p-2 rounded-lg hover:bg-accent transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 aria-label="Zoom in"
               >
-                <ZoomIn className="w-4 h-4 text-muted-foreground" />
+                <ZoomIn className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground" />
               </button>
 
-              <div className="w-px h-6 bg-border mx-1"></div>
+              <div className="w-px h-4 sm:h-6 bg-border mx-0.5 sm:mx-1"></div>
 
               {/* Fullscreen Toggle */}
               <button
                 onClick={toggleFullscreen}
-                className="p-2 rounded-lg hover:bg-accent transition-colors"
+                className="p-1.5 sm:p-2 rounded-lg hover:bg-accent transition-colors"
                 aria-label={
                   isFullscreen ? "Exit fullscreen" : "Enter fullscreen"
                 }
               >
                 {isFullscreen ? (
-                  <Minimize2 className="w-4 h-4 text-muted-foreground" />
+                  <Minimize2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground" />
                 ) : (
-                  <Maximize2 className="w-4 h-4 text-muted-foreground" />
+                  <Maximize2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-muted-foreground" />
                 )}
               </button>
             </div>
@@ -138,7 +150,7 @@ export default function PDFViewer({ imageurls }: Props) {
 
           {/* Document Viewer */}
           <div
-            className={`bg-muted/30 overflow-auto scrollbar scrollbar-thumb-stone-700 scrollbar-track-card ${
+            className={`bg-muted/30 overflow-auto ${
               isFullscreen ? "h-[calc(100vh-10.5rem)]" : "h-[calc(100vh-12rem)]"
             }`}
           >
@@ -150,7 +162,7 @@ export default function PDFViewer({ imageurls }: Props) {
               }}
             >
               <div
-                className="relative w-full h-full max-w-4xl mx-auto"
+                className="relative size-full max-w-4xl mx-auto"
                 style={{
                   aspectRatio: "8.5/11",
                   width: isFullscreen ? `${zoom}%` : undefined,

@@ -16,7 +16,7 @@ export default function StepIndicator({ currentStep, totalStep }: Props) {
             <div
               className={`w-8 h-8 rounded-full flex items-center justify-center font-semibold ${
                 step <= currentStep
-                  ? "bg-primary text-primary-foreground"
+                  ? "bg-lime-400 text-primary-foreground"
                   : "bg-muted text-muted-foreground"
               }`}
             >

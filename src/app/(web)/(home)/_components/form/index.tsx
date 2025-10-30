@@ -68,8 +68,9 @@ export default function Form(props: FormProp) {
       {currentStep === 2 && (
         <FormJobDescription
           defaultValue={data?.jobDescription ?? ""}
-          onPrevious={() => {
+          onPrevious={(value) => {
             setCurrentStep(1);
+            setData((prev) => ({ ...prev, jobDescription: value }));
           }}
           onNext={(value) => {
             setData((prev) => ({ ...prev, jobDescription: value }));

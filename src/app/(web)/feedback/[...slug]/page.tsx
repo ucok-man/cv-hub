@@ -18,7 +18,7 @@ export default async function Feedback(
 
   return (
     <section>
-      <div className="flex flex-row items-start relative p-8 pt-0 gap-8">
+      <div className="flex flex-col lg:flex-row items-start relative p-4 sm:p-8 pt-0 gap-8">
         {/* <div className="top-24 sticky"> */}
         <PDFViewer imageurls={resume.images} />
         {/* </div> */}

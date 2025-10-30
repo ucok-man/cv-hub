@@ -30,7 +30,9 @@ type Props = {
 export default function RootLayout({ children }: Props) {
   return (
     <html className="dark" lang="en">
-      <body className={`${fonts} antialiased bg-background`}>
+      <body
+        className={`${fonts} antialiased bg-background scrollbar scrollbar-thumb-stone-700 scrollbar-track-card`}
+      >
         <Providers>
           <main>
             <Navbar />

@@ -28,7 +28,7 @@ const formSchema = z.object({
 
 type Props = {
   onNext: (value: string) => void;
-  onPrevious: () => void;
+  onPrevious: (value: string) => void;
   defaultValue: string;
 };
 
@@ -63,8 +63,11 @@ export default function FormJobDescription(props: Props) {
               <Field data-invalid={isInvalid}>
                 <FieldLabel htmlFor={field.name}>Job Description</FieldLabel>
                 <FieldDescription>
-                  Write a clear & concise job description with responsibilities
-                  & expectations
+                  Write a clear <span className="max-sm:hidden">& concise</span>{" "}
+                  job description{" "}
+                  <span className="max-sm:hidden">
+                    with responsibilities & expectations
+                  </span>
                 </FieldDescription>
                 <InputGroup>
                   <InputGroupTextarea
@@ -95,12 +98,17 @@ export default function FormJobDescription(props: Props) {
         <Button
           type="button"
           variant="outline"
-          onClick={() => props.onPrevious()}
+          onClick={() => props.onPrevious(form.getFieldValue("jobDescription"))}
         >
           Previous
         </Button>
 
-        <Button type="submit">Next</Button>
+        <Button
+          type="submit"
+          className="bg-rose-500 hover:bg-rose-500/90 text-foreground"
+        >
+          Next
+        </Button>
       </FieldGroup>
     </form>
   );
