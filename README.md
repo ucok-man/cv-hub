@@ -2,7 +2,7 @@
 
 AI-powered resume analyzer that provides instant feedback on your CV with ATS compatibility scoring and actionable recommendations.
 
-**Live** : [https://cv-hub.ucokman.web.id](https://example.com)
+**Live** : [https://cv-hub.ucokman.web.id](https://cv-hub.ucokman.web.id)
 
 ## Tech Stack
 
