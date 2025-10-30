@@ -1,4 +1,5 @@
 import { clsx, type ClassValue } from "clsx";
+import { AlertTriangle, CheckCircle, Medal, XCircle } from "lucide-react";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
@@ -41,26 +42,42 @@ export function titlecase(name: string) {
 export function scoreStyle(score: number) {
   if (score >= 85) {
     return {
-      bg: "bg-emerald-950/30",
-      text: "text-emerald-400",
+      icon: Medal,
+      gradient: "from-emerald-900/10",
+      border: "border-emerald-800/50",
+      iconBg: "bg-emerald-900/30",
+      iconColor: "text-emerald-400",
+      labelColor: "text-emerald-300",
       label: "Excellent",
     };
   } else if (score >= 70) {
     return {
-      bg: "bg-lime-950/30",
-      text: "text-lime-400",
+      icon: CheckCircle,
+      gradient: "from-lime-900/10",
+      border: "border-lime-800/50",
+      iconBg: "bg-lime-900/30",
+      iconColor: "text-lime-400",
+      labelColor: "text-lime-300",
       label: "Strong",
     };
   } else if (score >= 50) {
     return {
-      bg: "bg-amber-950/30",
-      text: "text-amber-400",
+      icon: AlertTriangle,
+      gradient: "from-amber-900/10",
+      border: "border-amber-800/50",
+      iconBg: "bg-amber-900/30",
+      iconColor: "text-amber-400",
+      labelColor: "text-amber-300",
       label: "Good Start",
     };
   } else {
     return {
-      bg: "bg-rose-950/30",
-      text: "text-rose-400",
+      icon: XCircle,
+      gradient: "from-rose-900/10",
+      border: "border-rose-800/50",
+      iconBg: "bg-rose-900/30",
+      iconColor: "text-rose-400",
+      labelColor: "text-rose-300",
       label: "Needs Work",
     };
   }

@@ -119,7 +119,7 @@ export default function ScoreGauge({ score = 75 }: Props) {
         {/* Centered text */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pt-8">
           <motion.div
-            className={`text-3xl font-bold ${scoreStyle(score).text}`}
+            className={`text-3xl font-bold ${scoreStyle(score).labelColor}`}
           >
             {displayScore}
           </motion.div>

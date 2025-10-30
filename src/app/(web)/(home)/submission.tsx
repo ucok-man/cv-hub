@@ -28,7 +28,7 @@ export default function FormSubmission() {
             jobtitle = s.data.jobTitle;
           }
         }
-        router.push(`/feedback/${jobtitle.split("").join("-")}-${id}`);
+        router.push(`/feedback/${jobtitle.split(" ").join("-")}-${id}`);
       },
       onError: () => {
         toast.error("Oops! something went wrong", {

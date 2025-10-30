@@ -53,25 +53,41 @@ The JSON must strictly follow this schema:
   "toneAndStyle": {
     "score": number,
     "tips": [
-      { "type": "good" | "improve", "tip": string, "explanation": string }
+      { 
+        "type": "good" | "improve", 
+        "tip": string, // Short tip title 
+        "explanation": string // Explanation from the tip
+      }
     ]
   },
   "content": {
     "score": number,
     "tips": [
-      { "type": "good" | "improve", "tip": string, "explanation": string }
+      { 
+        "type": "good" | "improve", 
+        "tip": string, // Short tip title 
+        "explanation": string // Explanation from the tip
+      }
     ]
   },
   "structure": {
     "score": number,
     "tips": [
-      { "type": "good" | "improve", "tip": string, "explanation": string }
+      { 
+        "type": "good" | "improve", 
+        "tip": string, // Short tip title 
+        "explanation": string // Explanation from the tip
+      }
     ]
   },
   "skills": {
     "score": number,
     "tips": [
-      { "type": "good" | "improve", "tip": string, "explanation": string }
+      { 
+        "type": "good" | "improve", 
+        "tip": string, // Short tip title 
+        "explanation": string // Explanation from the tip
+      }
     ]
   }
 }

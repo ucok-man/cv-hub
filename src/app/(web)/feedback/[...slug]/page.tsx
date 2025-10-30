@@ -2,7 +2,9 @@ import MaxWidthWrapper from "@/components/max-width-wrapper";
 import { parseSlug } from "@/lib/utils";
 import { api } from "@/orpc";
 import { notFound } from "next/navigation";
-import Summary from "./_components/summary";
+import FeedbackATS from "./_components/feedback-ats";
+import FeedbackDetails from "./_components/feedback-details";
+import FeedbackSummary from "./_components/feedback-summary";
 
 export default async function Feedback(
   props: PageProps<"/feedback/[...slug]">
@@ -16,8 +18,10 @@ export default async function Feedback(
 
   return (
     <section>
-      <MaxWidthWrapper className="py-8">
-        <Summary feedback={resume.feedback} />
+      <MaxWidthWrapper className="py-8 space-y-8">
+        <FeedbackSummary feedback={resume.feedback} />
+        <FeedbackATS ats={resume.feedback.ATS} />
+        <FeedbackDetails feedback={resume.feedback} />
       </MaxWidthWrapper>
     </section>
   );
