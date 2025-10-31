@@ -4,15 +4,6 @@ AI-powered resume analyzer that provides instant feedback on your CV with ATS co
 
 **Live** : [https://cv-hub.ucokman.web.id](https://cv-hub.ucokman.web.id)
 
-## Tech Stack
-
-- **Frontend**: Next.js 16, React 19, Tailwind CSS
-- **Backend**: Next.js, Prisma, PostgreSQL
-- **AI**: OpenAI GPT-4
-- **Storage**: Cloudinary, PostgreSQL
-- **UI**: Shadcn UI, TanStack React Query
-- **API Communication**: ORPC (Open RPC)
-
 ## Quick Start
 
 ### Prerequisites
