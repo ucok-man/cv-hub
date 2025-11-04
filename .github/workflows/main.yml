@@ -108,6 +108,10 @@ jobs:
             # Add build arguments here
           build-args: |
             DATABASE_URL=${{ secrets.DATABASE_URL }}
+            CLOUDINARY_API_KEY=${{ secrets.CLOUDINARY_API_KEY }}
+            CLOUDINARY_SECRET=${{ secrets.CLOUDINARY_SECRET }}
+            CLOUDINARY_CLOUD_NAME=${{ secrets.CLOUDINARY_CLOUD_NAME }}
+            OPENAI_SECRET_KEY=${{ secrets.OPENAI_SECRET_KEY }}
 
           # Caching: This speeds up future builds by reusing layers
           cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.APP_IMAGE_NAME }}:buildcache
