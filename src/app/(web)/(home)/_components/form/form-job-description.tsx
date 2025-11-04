@@ -23,7 +23,7 @@ const formSchema = z.object({
   jobDescription: z
     .string()
     .min(20, "Job Description must be at least 20 characters.")
-    .max(100, "Job Description must be at most 100 characters."),
+    .max(200, "Job Description must be at most 200 characters."),
 });
 
 type Props = {
@@ -83,7 +83,7 @@ export default function FormJobDescription(props: Props) {
                   />
                   <InputGroupAddon align="block-end">
                     <InputGroupText className="tabular-nums">
-                      {field.state.value.length}/100 characters
+                      {field.state.value.length}/200 characters
                     </InputGroupText>
                   </InputGroupAddon>
                 </InputGroup>
