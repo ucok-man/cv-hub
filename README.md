@@ -10,6 +10,7 @@ AI-powered resume analyzer that provides instant feedback on your CV with ATS co
 
 - Node.js 20+
 - PostgreSQL
+- PNPM
 
 ### Setup
 
@@ -18,7 +19,7 @@ AI-powered resume analyzer that provides instant feedback on your CV with ATS co
    ```bash
    git clone <repo-url>
    cd cv-hub
-   npm install
+   pnpm install
    ```
 
 2. **Configure Environment**
@@ -36,18 +37,7 @@ AI-powered resume analyzer that provides instant feedback on your CV with ATS co
 
 4. **Run Dev Server**
    ```bash
-   npm run dev
+   pnpm run dev
    ```
 
 Visit `http://localhost:3000`
-
-## 📋 Environment Variables
-
-```env
-DATABASE_URL=""
-OPENAI_SECRET_KEY=""
-CLOUDINARY_API_KEY=""
-CLOUDINARY_SECRET=""
-CLOUDINARY_CLOUD_NAME=""
-
-```
