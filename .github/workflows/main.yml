@@ -102,7 +102,12 @@ jobs:
           file: ./Dockerfile # Path to Dockerfile
           push: true # Push to registry after building
           tags: ${{ steps.meta.outputs.tags }} # Use tags from step 4
-          labels: ${{ steps.meta.outputs.labels }}
+          labels:
+            ${{ steps.meta.outputs.labels }}
+
+            # Add build arguments here
+          build-args: |
+            DATABASE_URL=${{ secrets.DATABASE_URL }}
 
           # Caching: This speeds up future builds by reusing layers
           cache-from: type=registry,ref=${{ env.REGISTRY }}/${{ env.APP_IMAGE_NAME }}:buildcache

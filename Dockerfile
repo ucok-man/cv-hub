@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y \
 FROM base AS build
 WORKDIR /app
 COPY . .
+ARG DATABASE_URL
+ENV DATABASE_URL=$DATABASE_URL
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install
 RUN pnpm run build
  
