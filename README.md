@@ -32,7 +32,7 @@ AI-powered resume analyzer that provides instant feedback on your CV with ATS co
 3. **Setup Database**
 
    ```bash
-   npx prisma migrate dev
+   pnpm prisma migrate dev
    ```
 
 4. **Run Dev Server**
